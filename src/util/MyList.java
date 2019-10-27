@@ -99,6 +99,7 @@ public class MyList {
                 return current;
             }
             current = current.next;      
+            
         }
         return current;
     }

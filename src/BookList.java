@@ -105,7 +105,7 @@ public class BookList {
     public void addLast() {
         books.addLast(getBook());
     }
-
+    
     //1.2 output information of book list
     public void list() {
         
