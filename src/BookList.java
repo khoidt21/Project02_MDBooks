@@ -121,8 +121,8 @@ public class BookList {
     }
     
     //1.3 search book by book code
-    public void search() {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+    public void search(String bcode) {
+        books.search(bcode);
     }
 
     //1.4 accept and add a new Book to the begining of book list
