@@ -67,12 +67,7 @@ public class BookList {
 
     //1.2 output information of book list
     public void list() {
-        for(int i=0;i < books.size();i++){
-            //System.out.println("books: " + books.getNode(i));
-            Book k = books.getNode(i);
-            
-        }
-        
+        books.traverse();   
     }
     
     //1.3 search book by book code

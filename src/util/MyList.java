@@ -45,7 +45,12 @@ public class MyList {
 
     //output information of all books in the list
     public void traverse() {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        
+        Node<Book> current = head;
+        while (current != null) {
+            System.out.println(current.info);
+            current = current.next;
+        }   
     }
 
     //return number of nodes/elements in the list
@@ -74,7 +79,7 @@ public class MyList {
        return current;
         
     }
-
+    
     //add a new book after a position k
     public void addAfter(Book b, int k) {
         throw new UnsupportedOperationException("Remove this line and implement your code here!");
