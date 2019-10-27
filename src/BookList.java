@@ -108,6 +108,15 @@ public class BookList {
 
     //1.2 output information of book list
     public void list() {
+        
+        String c_code = "Code";
+        String c_title = "Title";
+        String c_quantity = "Quantity";
+        String c_lender = "Lender";
+        String c_price = "Price";
+        String c_value = "Value";
+        
+        System.out.println(String.format("%s %10s %20s %9s %8.5s %10s",c_code,c_title,c_quantity,c_lender,c_price,c_value));
         books.traverse();   
     }
     

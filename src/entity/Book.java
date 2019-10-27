@@ -70,6 +70,7 @@ public class Book implements Serializable {
 
     @Override
     public String toString() {
+
         return String.format("%-10s%-20s%-10d%-10d%-10.1f%-10.2f", bCode,title,
                 quantity,lended,price,quantity * price);
     }
