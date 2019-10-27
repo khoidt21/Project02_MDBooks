@@ -116,7 +116,7 @@ public class BookList {
         String c_price = "Price";
         String c_value = "Value";
         
-        System.out.println(String.format("%s %10s %20s %9s %8.5s %10s",c_code,c_title,c_quantity,c_lender,c_price,c_value));
+        System.out.println(String.format("%s %10s %22s %7s %8s %9s",c_code,c_title,c_quantity,c_lender,c_price,c_value));
         books.traverse();   
     }
     
