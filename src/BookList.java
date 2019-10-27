@@ -6,6 +6,7 @@
 
 
 import entity.Book;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import util.MyList;
 
@@ -31,31 +32,71 @@ public class BookList {
     //1.0 accept information of a Book
     private Book getBook() {
         
-        System.out.println("Nhap thong tin book: ");
+        String code = null;
+        String title = null;
+        boolean check = true;
+        Book newbook = new Book();
+        System.out.println("Enter input information book. ");
         
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhap thong tin code: ");
-        String code = scanner.nextLine();
+        // code
+        while(code == null || code.isEmpty()){
+            System.out.println("Input code: ");
+            code = scanner.nextLine();
+            newbook.setbCode(code);
+        }
+        // title 
+        while(title == null || title.isEmpty()){
+            System.out.println("Input title: ");
+            title = scanner.nextLine();
+            newbook.setTitle(title);
+        }
+        // quantity 
         
-        System.out.println("Nhap thong tin title: ");
-        String title = scanner.nextLine();
+        do{
+            try{
+                System.out.println("Input quantity:");
+                newbook.setQuantity(scanner.nextInt());
+                check = false;
+            }
+            catch(InputMismatchException e){
+                System.out.println("Quantity is number.Input quantity");
+                check = true;
+                scanner.nextLine();
+            }
+        }while(check);
+        // lended 
         
-        System.out.println("Nhap thong tin quantity: ");
-        int quantity = scanner.nextInt();
+        do{
+            try{
+                System.out.println("Input lended:");
+                newbook.setLended(scanner.nextInt());
+                check = false;
+            }
+            catch(InputMismatchException e){
+                System.out.println("Lended is number.Input lended");
+                check = true;
+                scanner.nextLine();
+            }
+            
+        }while(check);
+        // price 
         
-        System.out.println("Nhap thong tin price: ");
-        double price = scanner.nextDouble();
+        do{
+            try{
+                System.out.println("Input price:");
+                newbook.setPrice(scanner.nextDouble());
+                check = false;
+                scanner.nextLine();
+                
+            }catch(InputMismatchException e){
+                System.out.println("Price is number.Input price");
+                check = true;
+                scanner.nextLine();
+            }
         
-        System.out.println("Nhap thong tin lended: ");
-        int lended = scanner.nextInt();
+        }while(check);
         
-        Book newbook = new Book();
-        
-        newbook.setbCode(code);
-        newbook.setTitle(title);
-        newbook.setQuantity(quantity);
-        newbook.setPrice(price);
-        newbook.setLended(lended);
         return newbook;
         
     }
