@@ -45,11 +45,7 @@ public class Main {
                     bookList.list();
                     break;
                 case 3:
-                    System.out.print("Enter book code: ");
-                    input = new Scanner(System.in);
-                    String code = input.nextLine();
-                    System.out.println("Inforation of book code " + code);
-                    bookList.search(code);
+                    bookList.search();
                     break;
                 case 4:
                     bookList.addFirst();
@@ -60,6 +56,7 @@ public class Main {
                     break;
 
                 case 6:
+                    //delete book at position k
 
                 case 0:
                     System.out.println("Exiting Program...");
@@ -70,7 +67,8 @@ public class Main {
 
             }
             }catch(InputMismatchException ex){
-                System.out.println("Choice is number input");
+                ex.printStackTrace();
+                System.out.println("Choice is number input.");
                 input.nextLine();
             }
         } while (choice != 0);

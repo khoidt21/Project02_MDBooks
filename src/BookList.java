@@ -125,8 +125,14 @@ public class BookList {
     }
     
     //1.3 search book by book code
-    public void search(String bcode) {
-        System.out.println(books.search(bcode).info);
+    public void search() {
+       
+        String code;
+        System.out.println("Enter book code:");
+        Scanner input = new Scanner(System.in);
+        code = input.nextLine();
+        System.out.println("Inforation of book code " + code);
+        System.out.println(books.search(code).info);
     }
 
     //1.4 accept and add a new Book to the begining of book list
@@ -141,7 +147,7 @@ public class BookList {
         System.out.println("Enter adding position:");
         Scanner input = new Scanner(System.in);
         k = input.nextInt();
-        System.out.println("A new book has been added after position" + k);
+        System.out.println("A new book has been added after position " + k);
         books.addAfter(b, k);
     }
     
