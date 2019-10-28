@@ -132,7 +132,9 @@ public class BookList {
         Scanner input = new Scanner(System.in);
         code = input.nextLine();
         System.out.println("Inforation of book code " + code);
+        
         System.out.println(books.search(code).info);
+        
     }
 
     //1.4 accept and add a new Book to the begining of book list

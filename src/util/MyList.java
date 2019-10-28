@@ -28,27 +28,27 @@ public class MyList {
     //add a new Book to the end of list
     public void addLast(Book b) {
 
-        Node newnode = new Node(b);
+        Node node_new = new Node(b);
         if (tail == null) {
-            head = newnode;
-            tail = newnode;
+            head = node_new;
+            tail = node_new;
         } else {
 
-            tail.next = newnode;
-            tail = newnode;
+            tail.next = node_new;
+            tail = node_new;
         }
     }
 
     //add a new Book to the begining of list
     public void addFirst(Book b) {
 
-        Node<Book> newnode = new Node(b);
+        Node<Book> node_new = new Node(b);
         if (head == null) {
-            head = newnode;
-            tail = newnode;
+            head = node_new;
+            tail = node_new;
         } else {
-            newnode.next = head;
-            head = newnode;
+            node_new.next = head;
+            head = node_new;
         }
     }
 
@@ -129,7 +129,24 @@ public class MyList {
     
     //delete a book at position k
     public void deleteAt(int k) {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+       
+        if (head == null) 
+            return; 
+        
+        Node temp = head; 
+        if (k == 0) 
+        { 
+            head = temp.next;
+            return; 
+        } 
+        for (int i=0; temp!=null && i<k-1; i++) 
+            temp = temp.next; 
+        
+        if (temp == null || temp.next == null) 
+            return; 
+        
+        Node next = temp.next.next; 
+        temp.next = next;
     }
 
     //search a Node by a given book code
