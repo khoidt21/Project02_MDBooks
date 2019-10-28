@@ -1,5 +1,6 @@
 
 import entity.Book;
+import java.util.InputMismatchException;
 import util.MyList;
 import java.util.Scanner;
 
@@ -31,7 +32,14 @@ public class Main {
             System.out.println("6. Delete Book at position k");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
-            int choice = checkInputInteger(scanner, 0, 6);
+            int choice = -1;
+            
+            while(choice < 1 || choice > 6){
+
+            System.out.println("Enter \"1\", \"2\", \"3\", \"4\", \"5\" or \"6\"");
+            if(scanner.hasNextInt())
+               choice = scanner.nextInt();
+            }   
             switch (choice) {
                 case 1:
                     bookList.addLast();
@@ -43,10 +51,9 @@ public class Main {
                     String keyword = scanner.nextLine();
                     System.out.println("Enter book code: " + keyword);
                     bookList.search(keyword);
-                    
                     break;
                 case 4:
-                  
+                    bookList.addFirst();
                     break;
                 case 5:
                     
@@ -63,30 +70,5 @@ public class Main {
 
         }
 
-    }
-    
-    // check input integer
-    public static int checkInputInteger(Scanner scanner,int startIndex,int endIndex){
-        try{
-            int min,max;
-            if(startIndex < endIndex){
-                min = startIndex;
-                max = endIndex;
-            }else{
-                max = startIndex;
-                min = endIndex;
-            }
-            int result = Integer.parseInt(scanner.nextLine());
-            if(result < min || result > max){
-                System.out.println("Input integer from " + startIndex + " to " + endIndex + ".");
-                return checkInputInteger(scanner, startIndex, endIndex);
-            }
-            else return result;
-            
-        }catch(Exception ex){
-             System.out.println("Input integer from " + startIndex + " to " + endIndex + ".");
-             ex.printStackTrace();
-             return checkInputInteger(scanner, startIndex, endIndex);
-        }
     }
 }

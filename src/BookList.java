@@ -23,8 +23,6 @@ public class BookList {
         return books;
     }
 
-    
-    
     public BookList() {
         books = new MyList();
     }
@@ -127,9 +125,9 @@ public class BookList {
 
     //1.4 accept and add a new Book to the begining of book list
     public void addFirst() {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        books.addFirst(getBook());
     }
-
+    
     //1.5 Add a new Book after a position k
     public void addAfter() {
         throw new UnsupportedOperationException("Remove this line and implement your code here!");

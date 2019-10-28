@@ -27,20 +27,30 @@ public class MyList {
 
     //add a new Book to the end of list
     public void addLast(Book b) {
-        //throw new UnsupportedOperationException("Remove this line and implement your code here!");
+       
         Node newnode = new Node(b);
         if (tail == null) {
             head = newnode;
             tail = newnode;
         } else {
-            tail = newnode;
+            
             tail.next = newnode;
+            tail = newnode;
         }
     }
 
     //add a new Book to the begining of list
     public void addFirst(Book b) {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        
+        Node<Book> newnode = new Node(b);
+        if(head == null){
+            head = newnode;
+            tail = newnode;
+        }
+        else{
+            newnode.next = head;
+            head = newnode;
+        }
     }
 
     //output information of all books in the list
@@ -82,7 +92,8 @@ public class MyList {
     
     //add a new book after a position k
     public void addAfter(Book b, int k) {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        Node newbook = new Node(b);
+        
     }
 
     //delete a book at position k
