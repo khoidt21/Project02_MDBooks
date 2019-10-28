@@ -151,11 +151,11 @@ public class BookList {
     public void addAfter() {
         Book b = getBook();
         int k;
-        System.out.println("Enter adding position:");
+        System.out.println("Enter adding position: ");
         Scanner input = new Scanner(System.in);
         k = input.nextInt();
         if(books.size() < k){
-            System.out.println("Enter adding position k ");
+            System.out.println("Enter retype position: ");
             k = input.nextInt();
         }
         System.out.println("A new book has been added after position " + k);
@@ -164,6 +164,12 @@ public class BookList {
     
     //1.6 Delete a Book at position k
     public void deleteAt() {
+        int k;
+        System.out.println("Enter delete position: ");
+        Scanner input = new Scanner(System.in);
+        k = input.nextInt();
+        System.out.println("A book has been delete in position " + k);
+        books.deleteAt(k);
         
     }
 }

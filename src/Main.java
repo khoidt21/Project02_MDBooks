@@ -57,6 +57,7 @@ public class Main {
 
                 case 6:
                     //delete book at position k
+                    
 
                 case 0:
                     System.out.println("Exiting Program...");
