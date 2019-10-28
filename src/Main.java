@@ -33,24 +33,17 @@ public class Main {
             System.out.println("6. Delete Book at position k");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
-            
-           
+                   
             try{
-            
             choice = input.nextInt();
-            
             switch (choice) {
 
                 case 1:
-
                     bookList.addLast();
                     break;
-
                 case 2:
-
                     bookList.list();
                     break;
-
                 case 3:
                     System.out.print("Enter book code: ");
                     input = new Scanner(System.in);
@@ -58,14 +51,12 @@ public class Main {
                     System.out.println("Inforation of book code " + code);
                     bookList.search(code);
                     break;
-
                 case 4:
-
                     bookList.addFirst();
                     break;
-
-                case 5:
-                    //do something
+                case 5: 
+                    //add after 
+                    bookList.addAfter();
                     break;
 
                 case 6:

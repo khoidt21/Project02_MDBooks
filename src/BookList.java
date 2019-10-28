@@ -136,9 +136,15 @@ public class BookList {
     
     //1.5 Add a new Book after a position k
     public void addAfter() {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        Book b = getBook();
+        int k;
+        System.out.println("Enter adding position:");
+        Scanner input = new Scanner(System.in);
+        k = input.nextInt();
+        System.out.println("A new book has been added after position" + k);
+        books.addAfter(b, k);
     }
-
+    
     //1.6 Delete a Book at position k
     public void deleteAt() {
         throw new UnsupportedOperationException("Remove this line and implement your code here!");

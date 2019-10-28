@@ -27,13 +27,13 @@ public class MyList {
 
     //add a new Book to the end of list
     public void addLast(Book b) {
-       
+
         Node newnode = new Node(b);
         if (tail == null) {
             head = newnode;
             tail = newnode;
         } else {
-            
+
             tail.next = newnode;
             tail = newnode;
         }
@@ -41,13 +41,12 @@ public class MyList {
 
     //add a new Book to the begining of list
     public void addFirst(Book b) {
-        
+
         Node<Book> newnode = new Node(b);
-        if(head == null){
+        if (head == null) {
             head = newnode;
             tail = newnode;
-        }
-        else{
+        } else {
             newnode.next = head;
             head = newnode;
         }
@@ -55,12 +54,12 @@ public class MyList {
 
     //output information of all books in the list
     public void traverse() {
-        
+
         Node<Book> current = head;
         while (current != null) {
             System.out.println(current.info);
             current = current.next;
-        }   
+        }
     }
 
     //return number of nodes/elements in the list
@@ -76,26 +75,58 @@ public class MyList {
 
     //return a Node at position k, starting position is 0
     public Node<Book> getNode(int k) {
-       int size = 0;
-       Node current = head;
+        int size = 0;
+        Node current = head;
 
-       while(current !=null){
-           if(size == k){
-               return current;
-           }
-           size++;
-           current = current.next;
-       }
-       return current;
-        
+        while (current != null) {
+            if (size == k) {
+                return current;
+            }
+            size++;
+            current = current.next;
+        }
+        return current;
+
     }
-    
+
     //add a new book after a position k
     public void addAfter(Book b, int k) {
-        Node newbook = new Node(b);
         
-    }
+        Node<Book> node = new Node(b);
+        if (this.head == null) {    
+            if (k != 0) {
+                return;
+            } else {
+                this.head = node;
+                this.tail = node;
+            }
+        }
+        if (head != null && k == 0) {
+            node.next = this.head;
+            this.head = node;
+            return;
+        }
+        Node current = this.head;
+        Node previous = null;
 
+        int i = 0;
+        while (i < k) {
+            previous = current;
+            current = current.next;
+            if (current == null) {
+                break;
+            }
+            i++;
+        }
+        if(i == k){
+            node.next = current;
+            previous.next = node;
+        }
+        if(current == null){
+            tail = node;
+        }
+    }
+    
     //delete a book at position k
     public void deleteAt(int k) {
         throw new UnsupportedOperationException("Remove this line and implement your code here!");
@@ -103,16 +134,16 @@ public class MyList {
 
     //search a Node by a given book code
     public Node<Book> search(String bCode) {
-        
+
         Node<Book> current = head;
         while (current != null) {
-            if(current.info.getbCode().equals(bCode)){
+            if (current.info.getbCode().equals(bCode)) {
                 return current;
             }
-            current = current.next;      
-            
+            current = current.next;
+
         }
         return current;
     }
-    
+
 }
