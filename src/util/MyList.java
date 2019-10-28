@@ -130,25 +130,31 @@ public class MyList {
 
     //delete a book at position k
     public void deleteAt(int k) {
-        
-        if (head == null) {
-            return;
+
+        Node current = head;
+        Node parent = null;
+        int index = 0;
+
+        while (current != null && index < k) {
+            parent = current;
+            current = current.next;
+
+            index++;
         }
-        Node temp = head;
-        if (k == 0) {
-            head = temp.next;
-            return;
-        }
-        for (int i = 0; temp != null && i < k - 1; i++) {
-            temp = temp.next;
+        if (current != null && parent == null) {
+            if (current.next != null) {
+                head = current.next;
+            } else {
+                head = null;
+                tail = null;
+            }
+        } else if (current != null) {
+            parent.next = current.next;
+            if (current.next == null) {
+                tail = parent;
+            }
         }
 
-        if (temp == null || temp.next == null) {
-            return;
-        }
-
-        Node next = temp.next.next;
-        temp.next = next;
     }
 
     //search a Node by a given book code
