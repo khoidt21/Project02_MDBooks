@@ -18,11 +18,12 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Scanner input = new Scanner(System.in);
+        //boolean mainLoop = true;
         BookList bookList = new BookList();
-        
-        Scanner scanner = new Scanner(System.in);
-        boolean keepRunning = true;
-        while (keepRunning) {
+
+        int choice = -1;
+        do {
             System.out.println("Book List");
             System.out.println("1. Input Book and add to the end");
             System.out.println("2. Display books");
@@ -32,43 +33,57 @@ public class Main {
             System.out.println("6. Delete Book at position k");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
-            int choice = -1;
             
-            while(choice < 1 || choice > 6){
-
-            System.out.println("Enter \"1\", \"2\", \"3\", \"4\", \"5\" or \"6\"");
-            if(scanner.hasNextInt())
-               choice = scanner.nextInt();
-            }   
+           
+            try{
+            
+            choice = input.nextInt();
+            
             switch (choice) {
+
                 case 1:
+
                     bookList.addLast();
                     break;
+
                 case 2:
+
                     bookList.list();
                     break;
+
                 case 3:
-                    String keyword = scanner.nextLine();
-                    System.out.println("Enter book code: " + keyword);
-                    bookList.search(keyword);
+                    System.out.print("Enter book code: ");
+                    input = new Scanner(System.in);
+                    String code = input.nextLine();
+                    System.out.println("Inforation of book code " + code);
+                    bookList.search(code);
                     break;
+
                 case 4:
+
                     bookList.addFirst();
                     break;
+
                 case 5:
-                    
+                    //do something
                     break;
+
                 case 6:
-                    
-                    break;
+
                 case 0:
-                    keepRunning = false;
+                    System.out.println("Exiting Program...");
+                    System.exit(0);
                     break;
                 default:
-                    break;
-            }
+                    System.out.println(choice + " is not a valid Menu Option! Please Select Another.");
 
-        }
+            }
+            }catch(InputMismatchException ex){
+                System.out.println("Choice is number input");
+                input.nextLine();
+            }
+        } while (choice != 0);
 
     }
+
 }

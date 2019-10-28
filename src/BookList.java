@@ -30,21 +30,26 @@ public class BookList {
     //1.0 accept information of a Book
     private Book getBook() {
         
+        Book newbook = new Book();
         String code = null;
         String title = null;
         boolean check = true;
-        Book newbook = new Book();
+        
         System.out.println("Enter input information book. ");
         
         Scanner scanner = new Scanner(System.in);
         // code
-        while(code == null || code.isEmpty()){
+        while((code == null) || (code.trim().isEmpty())){
             System.out.println("Input code: ");
             code = scanner.nextLine();
+            if(books.search(code) !=null){
+                System.err.println("Book code is available.Input code");
+                code = scanner.nextLine();
+            }
             newbook.setbCode(code);
         }
         // title 
-        while(title == null || title.isEmpty()){
+        while((title == null) || (title.trim().isEmpty())){
             System.out.println("Input title: ");
             title = scanner.nextLine();
             newbook.setTitle(title);
@@ -115,12 +120,13 @@ public class BookList {
         String c_value = "Value";
         
         System.out.println(String.format("%s %10s %22s %7s %8s %9s",c_code,c_title,c_quantity,c_lender,c_price,c_value));
+        
         books.traverse();   
     }
     
     //1.3 search book by book code
     public void search(String bcode) {
-        books.search(bcode);
+        System.out.println(books.search(bcode).info);
     }
 
     //1.4 accept and add a new Book to the begining of book list
