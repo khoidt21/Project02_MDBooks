@@ -91,9 +91,9 @@ public class MyList {
 
     //add a new book after a position k
     public void addAfter(Book b, int k) {
-        
+
         Node<Book> node = new Node(b);
-        if (this.head == null) {    
+        if (this.head == null) {
             if (k != 0) {
                 return;
             } else {
@@ -118,34 +118,36 @@ public class MyList {
             }
             i++;
         }
-        if(i == k){
+        if (i == k) {
+            if (current == null) {
+                tail = node;
+            }
             node.next = current;
             previous.next = node;
         }
-        if(current == null){
-            tail = node;
-        }
+
     }
-    
+
     //delete a book at position k
     public void deleteAt(int k) {
-       
-        if (head == null) 
-            return; 
         
-        Node temp = head; 
-        if (k == 0) 
-        { 
+        if (head == null) {
+            return;
+        }
+        Node temp = head;
+        if (k == 0) {
             head = temp.next;
-            return; 
-        } 
-        for (int i=0; temp!=null && i<k-1; i++) 
-            temp = temp.next; 
-        
-        if (temp == null || temp.next == null) 
-            return; 
-        
-        Node next = temp.next.next; 
+            return;
+        }
+        for (int i = 0; temp != null && i < k - 1; i++) {
+            temp = temp.next;
+        }
+
+        if (temp == null || temp.next == null) {
+            return;
+        }
+
+        Node next = temp.next.next;
         temp.next = next;
     }
 

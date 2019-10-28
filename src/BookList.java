@@ -131,9 +131,14 @@ public class BookList {
         System.out.println("Enter book code:");
         Scanner input = new Scanner(System.in);
         code = input.nextLine();
-        System.out.println("Inforation of book code " + code);
         
-        System.out.println(books.search(code).info);
+        if(books.search(code) !=null){
+            System.out.println("Inforation of book code " + code);
+            System.out.println(books.search(code).info);
+        }
+        else{
+            System.out.println("Book is not in system.");
+        }
         
     }
 
@@ -149,12 +154,16 @@ public class BookList {
         System.out.println("Enter adding position:");
         Scanner input = new Scanner(System.in);
         k = input.nextInt();
+        if(books.size() < k){
+            System.out.println("Enter adding position k ");
+            k = input.nextInt();
+        }
         System.out.println("A new book has been added after position " + k);
         books.addAfter(b, k);
     }
     
     //1.6 Delete a Book at position k
     public void deleteAt() {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        
     }
 }
