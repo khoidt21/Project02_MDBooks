@@ -6,7 +6,6 @@
 package util;
 
 import entity.Book;
-import entity.BookComp;
 import java.util.Collections;
 
 /**
@@ -78,28 +77,18 @@ public class MyList {
     // function to sort a singly linked list using insertion sort 
     Node<Book> sorted;
 
-    public void insertionSort(Node<Book> headref) {
-        // Initialize sorted linked list 
-
-        Node current = headref;
-        // Traverse the given linked list and insert every 
-        // node to sorted 
+    public void insertionSort() {
+       
+        Node current = head;
         while (current != null) {
-            // Store next for next iteration 
             Node next = current.next;
-            // insert current in sorted linked list 
             sortedInsert(current);
-            // Update current 
             current = next;
         }
-        // Update head_ref to point to sorted linked list 
         head = sorted;
-        //tail = sorted;
-
         Node<Book> c = head;
         Node<Book> p = null;
         while (c != null) {
-
             p = c;
             c = c.next;
         }

@@ -31,7 +31,7 @@ public class Main {
             System.out.println("4. Input Book and add to beginning");
             System.out.println("5. Add Book after position k");
             System.out.println("6. Delete Book at position k");
-            System.out.println("7. Sort Book By Price");
+            System.out.println("7. Sort Book By Code");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             try {
@@ -62,6 +62,10 @@ public class Main {
                         break;
                     case 6:
                         bookList.deleteAt();
+                        break;
+                    case 7:
+                        bookList.sortBookByCode();
+                        bookList.list();
                         break;
                     case 0:
                         System.out.println("Exiting Program...");

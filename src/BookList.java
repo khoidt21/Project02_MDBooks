@@ -5,7 +5,6 @@
  */
 
 import entity.Book;
-import entity.BookComp;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -165,11 +164,10 @@ public class BookList {
         
     }
     
-    /*
-    public void sortBook(){
-       books.insertionSort(books);
+    
+    public void sortBookByCode(){
+       books.insertionSort();
     }
-    */
     
     //1.3 search book by book code
     public void search() {
