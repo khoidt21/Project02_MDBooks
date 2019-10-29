@@ -21,19 +21,18 @@ public class Main {
         Scanner input = new Scanner(System.in);
         //boolean mainLoop = true;
         BookList bookList = new BookList();
-        System.out.println("Book List");
-        System.out.println("1. Input Book and add to the end");
-        System.out.println("2. Display books");
-        System.out.println("3. Search by code");
-        System.out.println("4. Input Book and add to beginning");
-        System.out.println("5. Add Book after position k");
-        System.out.println("6. Delete Book at position k");
-        System.out.println("0. Exit");
-        System.out.println("Enter your choice: ");
 
         int choice = 0;
         do {
-
+            System.out.println("Book List");
+            System.out.println("1. Input Book and add to the end");
+            System.out.println("2. Display books");
+            System.out.println("3. Search by code");
+            System.out.println("4. Input Book and add to beginning");
+            System.out.println("5. Add Book after position k");
+            System.out.println("6. Delete Book at position k");
+            System.out.println("0. Exit");
+            System.out.println("Enter your choice: ");
             try {
                 choice = input.nextInt();
                 if (choice < 1 || choice > 6) {
@@ -72,7 +71,7 @@ public class Main {
 
                 }
             } catch (InputMismatchException ex) {
-                System.out.println("You have entered an invalid choice. Try again.");
+                System.out.println("You have entered choice is number. Try again.");
                 break;
             }
 

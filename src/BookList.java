@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import util.MyList;
 
 /**
@@ -46,12 +48,21 @@ public class BookList {
         while ((code == null) || (code.trim().isEmpty())) {
             System.out.println("Input code: ");
             code = scanner.nextLine();
-            if (books.search(code) != null) {
-                System.err.println("Book code is available.Input code");
-                code = scanner.nextLine();
-            }
-            newbook.setbCode(code);
         }
+        
+        while (books.search(code) != null) {
+            System.err.println("Book code is available.Input code");
+            code = scanner.nextLine();
+        }
+        
+        Pattern codePattern = Pattern.compile("^[B]{1}[0-9]{2}");
+        while (!codePattern.matcher(code).matches()) {
+            System.out.println("Bad input.Try again.Ex: B03 or B09 or B07");
+            code = scanner.nextLine();
+        }
+        
+        newbook.setbCode(code);
+
         // title 
         while ((title == null) || (title.trim().isEmpty())) {
             System.out.println("Input title: ");
@@ -114,22 +125,32 @@ public class BookList {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
         for (int i = 0; i < books.size(); i++) {
             bw.write(books.getNode(i).info.toString());
-            
         }
         bw.newLine();
         bw.close();
     }
 
+    public boolean checkCodeBook(String code) {
+
+        boolean match;
+        String regex = "^[B]{1}[0-9]{2}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(code);
+        match = matcher.matches();
+        return match;
+    }
+
     //1.1 accept and add a new Book to the end of book list
     public void addLast() {
-        
+
         books.addLast(getBook());
-        try {
-            save(getBook(), "data.txt");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-                
+        /*
+         try {
+         save(getBook(), "data.txt");
+         } catch (IOException ex) {
+         ex.printStackTrace();
+         }
+         */
     }
 
     //1.2 output information of book list
@@ -190,6 +211,10 @@ public class BookList {
         System.out.println("Enter delete position: ");
         Scanner input = new Scanner(System.in);
         k = input.nextInt();
+        if (books.size() < k) {
+            System.out.println("Enter retype position: ");
+            k = input.nextInt();
+        }
         System.out.println("A book has been delete in position " + k);
         books.deleteAt(k);
 
