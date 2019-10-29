@@ -30,27 +30,27 @@ public class MyList {
     //add a new Book to the end of list
     public void addLast(Book b) {
 
-        Node node_new = new Node(b);
+        Node nodeNew = new Node(b);
         if (tail == null) {
-            head = node_new;
-            tail = node_new;
+            head = nodeNew;
+            tail = nodeNew;
         } else {
 
-            tail.next = node_new;
-            tail = node_new;
+            tail.next = nodeNew;
+            tail = nodeNew;
         }
     }
 
     //add a new Book to the begining of list
     public void addFirst(Book b) {
 
-        Node<Book> node_new = new Node(b);
+        Node<Book> nodeNew = new Node(b);
         if (head == null) {
-            head = node_new;
-            tail = node_new;
+            head = nodeNew;
+            tail = nodeNew;
         } else {
-            node_new.next = head;
-            head = node_new;
+            nodeNew.next = head;
+            head = nodeNew;
         }
     }
 
@@ -65,11 +65,23 @@ public class MyList {
         }
     }
 
+    //return number of nodes/elements in the list
+    public int size() {
+        int size = 0;
+        Node current = head;
+        while (current != null) {
+            size++;
+            current = current.next;
+        }
+        return size;
+    }
     // function to sort a singly linked list using insertion sort 
+    Node<Book> sorted;
+    
     public void insertionSort(Node<Book> headref)  
     { 
         // Initialize sorted linked list 
-        Node sorted = null; 
+        
         Node current = headref; 
         // Traverse the given linked list and insert every 
         // node to sorted 
@@ -84,11 +96,14 @@ public class MyList {
         } 
         // Update head_ref to point to sorted linked list 
         head = sorted; 
+        //tail = sorted;
+        
+        
     } 
     
     public void sortedInsert(Node<Book> newnode) {
         /* Special case for the head end */
-        Node<Book> sorted = null;
+       
         
         Book b = newnode.info;
         
@@ -104,18 +119,6 @@ public class MyList {
             newnode.next = current.next;
             current.next = newnode;
         }
-    }
-    
-
-    //return number of nodes/elements in the list
-    public int size() {
-        int size = 0;
-        Node current = head;
-        while (current != null) {
-            size++;
-            current = current.next;
-        }
-        return size;
     }
 
     //return a Node at position k, starting position is 0
