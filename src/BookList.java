@@ -165,14 +165,12 @@ public class BookList {
         
     }
     
-    
-    
     /*
     public void sortBook(){
-        Collections.sort(books,new BookComp());
+       books.insertionSort(books);
     }
     */
-
+    
     //1.3 search book by book code
     public void search() {
 
