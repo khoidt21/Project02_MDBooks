@@ -21,57 +21,61 @@ public class Main {
         Scanner input = new Scanner(System.in);
         //boolean mainLoop = true;
         BookList bookList = new BookList();
+        System.out.println("Book List");
+        System.out.println("1. Input Book and add to the end");
+        System.out.println("2. Display books");
+        System.out.println("3. Search by code");
+        System.out.println("4. Input Book and add to beginning");
+        System.out.println("5. Add Book after position k");
+        System.out.println("6. Delete Book at position k");
+        System.out.println("0. Exit");
+        System.out.println("Enter your choice: ");
 
-        int choice = -1;
+        int choice = 0;
         do {
-            System.out.println("Book List");
-            System.out.println("1. Input Book and add to the end");
-            System.out.println("2. Display books");
-            System.out.println("3. Search by code");
-            System.out.println("4. Input Book and add to beginning");
-            System.out.println("5. Add Book after position k");
-            System.out.println("6. Delete Book at position k");
-            System.out.println("0. Exit");
-            System.out.println("Enter your choice: ");
-                   
-            try{
-            choice = input.nextInt();
-            switch (choice) {
 
-                case 1:
-                    bookList.addLast();
-                    break;
-                case 2:
-                    bookList.list();
-                    break;
-                case 3:
-                    bookList.search();
-                    break;
-                case 4:
-                    bookList.addFirst();
-                    break;
-                case 5: 
-                    //add after 
-                    bookList.addAfter();
-                    break;
+            try {
+                choice = input.nextInt();
+                if (choice < 1 || choice > 6) {
+                    System.out.printf("You have not entered a number between 0 and 6. " + "Try again.\n");
+                    System.out.printf("Enter your choice between 0 and 6 only: \n");
+                    // Removed nextInt call
+                    continue;
+                }
 
-                case 6:
-                    //delete book at position k
-                    
+                switch (choice) {
 
-                case 0:
-                    System.out.println("Exiting Program...");
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println(choice + " is not a valid Menu Option! Please Select Another.");
+                    case 1:
+                        bookList.addLast();
+                        break;
+                    case 2:
+                        bookList.list();
+                        break;
+                    case 3:
+                        bookList.search();
+                        break;
+                    case 4:
+                        bookList.addFirst();
+                        break;
+                    case 5:
+                        bookList.addAfter();
+                        break;
+                    case 6:
+                        bookList.deleteAt();
+                        break;
+                    case 0:
+                        System.out.println("Exiting Program...");
+                        System.exit(0);
+                        break;
+                    default:
+                        System.out.println(choice + " is not a valid Menu Option! Please Select Another.");
 
+                }
+            } catch (InputMismatchException ex) {
+                System.out.println("You have entered an invalid choice. Try again.");
+                break;
             }
-            }catch(InputMismatchException ex){
-                ex.printStackTrace();
-                System.out.println("Choice is number input.");
-                input.nextLine();
-            }
+
         } while (choice != 0);
 
     }
