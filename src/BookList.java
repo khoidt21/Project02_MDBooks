@@ -5,11 +5,13 @@
  */
 
 import entity.Book;
+import entity.BookComp;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -55,9 +57,9 @@ public class BookList {
             code = scanner.nextLine();
         }
         
-        Pattern codePattern = Pattern.compile("^[B]{1}[0-9]{2}");
+        Pattern codePattern = Pattern.compile("^[B]{1}[0-9]{2}$");
         while (!codePattern.matcher(code).matches()) {
-            System.out.println("Bad input.Try again.Ex: B03 or B09 or B07");
+            System.out.println("Bad input.Try again.Input code by format: B03 or B09 or B07 or B05");
             code = scanner.nextLine();
         }
         
@@ -116,7 +118,10 @@ public class BookList {
         return newbook;
 
     }
-
+    
+    
+    
+    /*
     public void save(Book book, String fileName) throws IOException {
 
         File fout = new File(fileName);
@@ -129,17 +134,8 @@ public class BookList {
         bw.newLine();
         bw.close();
     }
-
-    public boolean checkCodeBook(String code) {
-
-        boolean match;
-        String regex = "^[B]{1}[0-9]{2}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(code);
-        match = matcher.matches();
-        return match;
-    }
-
+    */
+    
     //1.1 accept and add a new Book to the end of book list
     public void addLast() {
 
@@ -164,8 +160,9 @@ public class BookList {
         String c_value = "Value";
 
         System.out.println(String.format("%s %10s %22s %7s %8s %9s", c_code, c_title, c_quantity, c_lender, c_price, c_value));
-
+        
         books.traverse();
+        
     }
 
     //1.3 search book by book code

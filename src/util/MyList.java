@@ -6,6 +6,8 @@
 package util;
 
 import entity.Book;
+import entity.BookComp;
+import java.util.Collections;
 
 /**
  *
@@ -15,7 +17,7 @@ public class MyList {
 
     Node<Book> head, tail;
 
-    //ctor
+    //contructor MyList
     public MyList() {
         head = tail = null;
     }
@@ -59,6 +61,7 @@ public class MyList {
         while (current != null) {
             System.out.println(current.info);
             current = current.next;
+            
         }
     }
 
@@ -171,4 +174,26 @@ public class MyList {
         return current;
     }
 
+    public void sortList() {
+
+//        Node current = null, index = null;
+//        int temp;
+//        //Check whether list is empty  
+//        if (head == null) {
+//            return;
+//        } else {
+//            //Current will point to head  
+//            for (current = head; current.next != null; current = current.next) {
+//                //Index will point to node next to current  
+//                for (index = current.next; index != null; index = index.next) {
+//                    //If current's data is greater than index's data, swap the data of current and index  
+//                    if (current > index) {
+//                        temp = current.data;
+//                        current.data = index.data;
+//                        index.data = temp;
+//                    }
+//                }
+//            }
+//        }
+    }
 }

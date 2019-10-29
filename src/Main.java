@@ -31,13 +31,14 @@ public class Main {
             System.out.println("4. Input Book and add to beginning");
             System.out.println("5. Add Book after position k");
             System.out.println("6. Delete Book at position k");
+            System.out.println("7. Sort Book By Price");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             try {
                 choice = input.nextInt();
-                if (choice < 1 || choice > 6) {
-                    System.out.printf("You have not entered a number between 0 and 6. " + "Try again.\n");
-                    System.out.printf("Enter your choice between 0 and 6 only: \n");
+                if (choice < 1 || choice > 7) {
+                    System.out.printf("You have not entered a number between 0 and 7. " + "Try again.\n");
+                    System.out.printf("Enter your choice between 0 and 7 only: \n");
                     // Removed nextInt call
                     continue;
                 }
