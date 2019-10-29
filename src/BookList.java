@@ -164,6 +164,14 @@ public class BookList {
         books.traverse();
         
     }
+    
+    
+    
+    /*
+    public void sortBook(){
+        Collections.sort(books,new BookComp());
+    }
+    */
 
     //1.3 search book by book code
     public void search() {

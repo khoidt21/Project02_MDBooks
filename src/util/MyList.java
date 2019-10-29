@@ -61,9 +61,51 @@ public class MyList {
         while (current != null) {
             System.out.println(current.info);
             current = current.next;
-            
+
         }
     }
+
+    // function to sort a singly linked list using insertion sort 
+    public void insertionSort(Node<Book> headref)  
+    { 
+        // Initialize sorted linked list 
+        Node sorted = null; 
+        Node current = headref; 
+        // Traverse the given linked list and insert every 
+        // node to sorted 
+        while (current != null)  
+        { 
+            // Store next for next iteration 
+            Node next = current.next; 
+            // insert current in sorted linked list 
+            sortedInsert(current); 
+            // Update current 
+            current = next; 
+        } 
+        // Update head_ref to point to sorted linked list 
+        head = sorted; 
+    } 
+    
+    public void sortedInsert(Node<Book> newnode) {
+        /* Special case for the head end */
+        Node<Book> sorted = null;
+        
+        Book b = newnode.info;
+        
+        if (sorted == null || b.getbCode().equals(newnode.info.getbCode())) {
+            newnode.next = sorted;
+            sorted = newnode;
+        } else {
+            Node<Book> current = sorted;
+            /* Locate the node before the point of insertion */
+            while (current.next != null && current.next.info.getbCode().equals(newnode.info.getbCode())) {
+                current = current.next;
+            }
+            newnode.next = current.next;
+            current.next = newnode;
+        }
+    }
+    
 
     //return number of nodes/elements in the list
     public int size() {
