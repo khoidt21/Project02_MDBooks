@@ -92,13 +92,13 @@ public class MyList {
         
         Book b = newnode.info;
         
-        if (sorted == null || b.getbCode().equals(newnode.info.getbCode())) {
+        if (sorted == null || b.getbCode().compareTo(newnode.info.getbCode()) < 0) {
             newnode.next = sorted;
             sorted = newnode;
         } else {
             Node<Book> current = sorted;
             /* Locate the node before the point of insertion */
-            while (current.next != null && current.next.info.getbCode().equals(newnode.info.getbCode())) {
+            while (current.next != null && current.next.info.getbCode().compareTo(newnode.info.getbCode()) < 0) {
                 current = current.next;
             }
             newnode.next = current.next;
