@@ -170,7 +170,7 @@ public class BookList {
         try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                
+
                 Book book = new Book();
                 String arr[] = line.split(",");
                 String bCode = arr[0].toString();
@@ -213,7 +213,7 @@ public class BookList {
 
     //1.2 output information of book list
     public void list() {
-       
+
         String c_code = "Code";
         String c_title = "Title";
         String c_quantity = "Quantity";
@@ -222,7 +222,7 @@ public class BookList {
         String c_value = "Value";
 
         System.out.println(String.format("%s %10s %22s %7s %8s %9s", c_code, c_title, c_quantity, c_lender, c_price, c_value));
-        
+
         books.traverse();
 
     }
@@ -252,13 +252,12 @@ public class BookList {
     public void addFirst() {
         books.addFirst(getBook());
 
-        /*
-         try {
-         saveBookToFile(books, "data.txt");
-         } catch (IOException ex) {
-         Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         */
+        try {
+            saveBookToFile(books, "data.txt");
+        } catch (IOException ex) {
+            System.out.println("Add book to first error.");
+        }
+        
     }
 
     //1.5 Add a new Book after a position k
