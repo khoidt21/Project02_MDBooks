@@ -180,31 +180,31 @@ public class BookList {
                 double price = Double.parseDouble(arr[4].toString());
 
                 if (bCode.isEmpty()) {
-                    System.out.println("Code is not empty");
+                    System.out.println("Code is not empty.");
                 } else {
                     book.setbCode(bCode);
                 }
                 if (title.isEmpty()) {
-                    System.out.println("Title is not empty");
+                    System.out.println("Title is not empty.");
                 } else {
                     book.setTitle(title);
                 }
                 try {
                     book.setQuantity(quantity);
                 } catch (Exception ex) {
-                    System.out.println("Quantity is number");
+                    System.out.println("Quantity is number.");
                 }
                 try {
                     book.setLended(ledend);
                 } catch (Exception ex) {
-                    System.out.println("Lended is number");
+                    System.out.println("Lended is number.");
                 }
                 try {
                     book.setPrice(price);
                 } catch (Exception ex) {
-                    System.out.println("Price is number");
+                    System.out.println("Price is number.");
                 }
-                
+                // add information to books 
                 books.addLast(book);
             }
         }
@@ -223,13 +223,6 @@ public class BookList {
 
         System.out.println(String.format("%s %10s %22s %7s %8s %9s", c_code, c_title, c_quantity, c_lender, c_price, c_value));
         
-        /*
-        try {
-            loadDataBook("data.txt");
-        } catch (IOException ex) {
-            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
         books.traverse();
 
     }
