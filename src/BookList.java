@@ -264,14 +264,24 @@ public class BookList {
     //1.5 Add a new Book after a position k
     public void addAfter() {
         Book b = getBook();
-        int k;
+        int k = 0;
+        boolean check = true;
         System.out.println("Enter adding position: ");
         Scanner input = new Scanner(System.in);
-        k = input.nextInt();
-        if (books.size() < k) {
-            System.out.println("Enter retype position: ");
-            k = input.nextInt();
-        }
+        do {
+            try {
+                k = input.nextInt();
+                if (books.size() < k) {
+                    System.out.println("Enter retype position: ");
+                    k = input.nextInt();
+                }
+                check = false;
+            } catch (InputMismatchException ex) {
+                System.out.println("k is number.Enter position k: ");
+                input.nextLine();
+                check = true;
+            }
+        } while (check);
         System.out.println("A new book has been added after position " + k);
         books.addAfter(b, k);
         // add data book to file data.txt
@@ -294,7 +304,7 @@ public class BookList {
         }
         System.out.println("A book has been delete in position " + k);
         books.deleteAt(k);
-        
+
         // luu lai du lieu sau khi xoa tai vi tri k vao file data.txt
         try {
             saveBookToFile(books, "data.txt");
@@ -303,7 +313,5 @@ public class BookList {
             System.out.println("Save data file after delete position");
         }
     }
-
-    
 
 }

@@ -32,7 +32,7 @@ public class Main {
             System.out.println("5. Add Book after position k");
             System.out.println("6. Delete Book at position k");
             System.out.println("7. Sort Book By Code");
-            System.out.println("8. Sort By Price");
+            System.out.println("8. Sort By Price Ascending");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             try {
