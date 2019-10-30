@@ -335,6 +335,7 @@ public class BookList {
             System.out.println("Save data file after delete position");
         }
         // goi lai list book 
+        System.out.println("List book after delete");
         list();
     }
 
