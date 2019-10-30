@@ -137,7 +137,7 @@ public class BookList {
     public void addLast() {
 
         books.addLast(getBook());
-
+        // add data book to file txt
         try {
             saveBookToFile(books, "data.txt");
         } catch (IOException ex) {
@@ -251,7 +251,7 @@ public class BookList {
     //1.4 accept and add a new Book to the begining of book list
     public void addFirst() {
         books.addFirst(getBook());
-
+        // add data book to file txt
         try {
             saveBookToFile(books, "data.txt");
         } catch (IOException ex) {
