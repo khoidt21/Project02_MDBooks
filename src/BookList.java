@@ -294,14 +294,24 @@ public class BookList {
 
     //1.6 Delete a Book at position k
     public void deleteAt() {
-        int k;
+        int k = 0;
         System.out.println("Enter delete position: ");
         Scanner input = new Scanner(System.in);
-        k = input.nextInt();
-        if (books.size() < k) {
-            System.out.println("Enter retype position: ");
-            k = input.nextInt();
-        }
+        boolean check = true;
+        do {
+            try {
+                k = input.nextInt();
+                if (books.size() < k) {
+                    System.out.println("Enter retype position: ");
+                    k = input.nextInt();
+                }
+                check = false;
+            } catch (InputMismatchException ex) {
+                System.out.println("k is number.Enter position k: ");
+                input.nextLine();
+                check = true;
+            }
+        } while (check);
         System.out.println("A book has been delete in position " + k);
         books.deleteAt(k);
 
