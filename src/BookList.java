@@ -118,6 +118,9 @@ public class BookList {
 
     }
     
+    public void sortBookByPrice(){
+        books.sortList(new BookSortingComparatorByPrice());
+    }
     
     
     /*
