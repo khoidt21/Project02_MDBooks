@@ -60,12 +60,13 @@ public class MyList {
 
         Node<Book> current = head;
         if (current == null) {
-            System.out.println("List is empty");
-        }
-        while (current != null) {
-            System.out.println(current.info);
-            current = current.next;
+            System.out.println("This list contains no items.");
+        } else {
+            while (current != null) {
+                System.out.println(current.info);
+                current = current.next;
 
+            }
         }
     }
 
@@ -81,7 +82,7 @@ public class MyList {
     }
 
     public void sortBookByCode() {
-        
+
         Node<Book> current = head, index = null;
         Book temp;
 
@@ -100,45 +101,6 @@ public class MyList {
                 }
                 current = current.next;
             }
-        }
-    }
-
-    // function to sort a singly linked list using insertion sort 
-    Node<Book> sorted;
-
-    public void insertionSort() {
-
-        Node current = head;
-        while (current != null) {
-            Node next = current.next;
-            sortedInsert(current);
-            current = next;
-        }
-        head = sorted;
-        Node<Book> c = head;
-        Node<Book> p = null;
-        while (c != null) {
-            p = c;
-            c = c.next;
-        }
-        tail = p;
-
-    }
-
-    public void sortedInsert(Node<Book> newnode) {
-
-        Book b = newnode.info;
-        if (sorted == null || b.getbCode().compareTo(newnode.info.getbCode()) > 0) {
-            newnode.next = sorted;
-            sorted = newnode;
-        } else {
-            Node<Book> current = sorted;
-
-            while (current.next != null && current.next.info.getbCode().compareTo(newnode.info.getbCode()) > 0) {
-                current = current.next;
-            }
-            newnode.next = current.next;
-            current.next = newnode;
         }
     }
 

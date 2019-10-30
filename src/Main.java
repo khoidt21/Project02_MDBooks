@@ -39,7 +39,6 @@ public class Main {
                 if (choice < 1 || choice > 7) {
                     System.out.printf("You have not entered a number between 0 and 7. " + "Try again.\n");
                     System.out.printf("Enter your choice between 0 and 7 only: \n");
-                    // Removed nextInt call
                     continue;
                 }
 
