@@ -80,8 +80,8 @@ public class MyList {
         return size;
     }
 
-    public void sortList() {
-        //Node current will point to head  
+    public void sortBookByCode() {
+        
         Node<Book> current = head, index = null;
         Book temp;
 
@@ -89,11 +89,8 @@ public class MyList {
             return;
         } else {
             while (current != null) {
-                //Node index will point to node next to current  
                 index = current.next;
-
                 while (index != null) {
-                    //If current node's data is greater than index's node data, swap the data between them  
                     if (current.info.getbCode().compareTo(index.info.getbCode()) > 0) {
                         temp = current.info;
                         current.info = index.info;

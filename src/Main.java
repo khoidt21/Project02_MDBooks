@@ -64,7 +64,7 @@ public class Main {
                         bookList.deleteAt();
                         break;
                     case 7:
-                        bookList.sortList();
+                        bookList.sortBookByCode();
                         bookList.list();
                         break;
                     case 0:
