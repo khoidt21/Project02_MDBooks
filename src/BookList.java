@@ -5,14 +5,20 @@
  */
 
 import entity.Book;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import util.MyList;
@@ -32,6 +38,11 @@ public class BookList {
 
     public BookList() {
         books = new MyList();
+        try {
+            loadDataBook("data.txt");
+        } catch (IOException ex) {
+            System.out.println("*****Load data: data.txt file not found.");
+        }
     }
 
     //1.0 accept information of a Book
@@ -50,18 +61,18 @@ public class BookList {
             System.out.println("Input code: ");
             code = scanner.nextLine();
         }
-        
+
         while (books.search(code) != null) {
             System.err.println("Book code is available.Input code");
             code = scanner.nextLine();
         }
-        
+
         Pattern codePattern = Pattern.compile("^[B]{1}[0-9]{2}$");
         while (!codePattern.matcher(code).matches()) {
             System.out.println("Bad input.Try again.Input code by format: B03 or B09 or B07 or B05");
             code = scanner.nextLine();
         }
-        
+
         newbook.setbCode(code);
 
         // title 
@@ -117,43 +128,92 @@ public class BookList {
         return newbook;
 
     }
-    
-    public void sortBookByPrice(){
+
+    public void sortBookByPrice() {
         books.sortList(new BookSortingComparatorByPrice());
     }
-    
-    
-    /*
-    public void save(Book book, String fileName) throws IOException {
+
+    //1.1 accept and add a new Book to the end of book list
+    public void addLast() {
+
+        books.addLast(getBook());
+
+        try {
+            saveBookToFile(books, "data.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void saveBookToFile(MyList books, String fileName) throws IOException {
 
         File fout = new File(fileName);
         FileOutputStream fos = new FileOutputStream(fout);
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
         for (int i = 0; i < books.size(); i++) {
-            bw.write(books.getNode(i).info.toString());
+
+            bw.write(books.getNode(i).info.getbCode() + "," + books.getNode(i).info.getTitle() + ","
+                    + books.getNode(i).info.getQuantity() + ","
+                    + books.getNode(i).info.getLended() + "," + books.getNode(i).info.getPrice() + ","
+                    + String.format("%.2f", books.getNode(i).info.getQuantity() * books.getNode(i).info.getPrice()));
+            bw.newLine();
         }
-        bw.newLine();
         bw.close();
     }
-    */
-    
-    //1.1 accept and add a new Book to the end of book list
-    public void addLast() {
 
-        books.addLast(getBook());
-        /*
-         try {
-         save(getBook(), "data.txt");
-         } catch (IOException ex) {
-         ex.printStackTrace();
-         }
-         */
+    public void loadDataBook(String fileName) throws FileNotFoundException, IOException {
+
+        FileReader fileReader = new FileReader(fileName);
+
+        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                
+                Book book = new Book();
+                String arr[] = line.split(",");
+                String bCode = arr[0].toString();
+                String title = arr[1].toString();
+                int quantity = Integer.parseInt(arr[2].toString());
+                int ledend = Integer.parseInt(arr[3].toString());
+                double price = Double.parseDouble(arr[4].toString());
+
+                if (bCode.isEmpty()) {
+                    System.out.println("Code is not empty");
+                } else {
+                    book.setbCode(bCode);
+                }
+                if (title.isEmpty()) {
+                    System.out.println("Title is not empty");
+                } else {
+                    book.setTitle(title);
+                }
+                try {
+                    book.setQuantity(quantity);
+                } catch (Exception ex) {
+                    System.out.println("Quantity is number");
+                }
+                try {
+                    book.setLended(ledend);
+                } catch (Exception ex) {
+                    System.out.println("Lended is number");
+                }
+                try {
+                    book.setPrice(price);
+                } catch (Exception ex) {
+                    System.out.println("Price is number");
+                }
+                
+                books.addLast(book);
+            }
+        }
+
     }
 
     //1.2 output information of book list
     public void list() {
-
+       
         String c_code = "Code";
         String c_title = "Title";
         String c_quantity = "Quantity";
@@ -163,16 +223,21 @@ public class BookList {
 
         System.out.println(String.format("%s %10s %22s %7s %8s %9s", c_code, c_title, c_quantity, c_lender, c_price, c_value));
         
+        /*
+        try {
+            loadDataBook("data.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
         books.traverse();
-        
+
     }
-    
-    
-    public void sortBookByCode(){
-       books.sortList(new BookSortingCompartorByCode());
+
+    public void sortBookByCode() {
+        books.sortList(new BookSortingCompartorByCode());
     }
-    
-    
+
     //1.3 search book by book code
     public void search() {
 
@@ -193,6 +258,14 @@ public class BookList {
     //1.4 accept and add a new Book to the begining of book list
     public void addFirst() {
         books.addFirst(getBook());
+
+        /*
+         try {
+         saveBookToFile(books, "data.txt");
+         } catch (IOException ex) {
+         Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         */
     }
 
     //1.5 Add a new Book after a position k

@@ -30,7 +30,7 @@ public class MyList {
 
     //add a new Book to the end of list
     public void addLast(Book b) {
-
+        
         Node nodeNew = new Node(b);
         if (tail == null) {
             head = nodeNew;
@@ -80,9 +80,10 @@ public class MyList {
         }
         return size;
     }
-    /*
-    public void sortBookByCode() {
 
+    public void sortList(Comparator<Book> b) {
+
+        //Node current will point to head  
         Node<Book> current = head, index = null;
         Book temp;
 
@@ -90,9 +91,14 @@ public class MyList {
             return;
         } else {
             while (current != null) {
+                //Node index will point to node next to current  
                 index = current.next;
+
                 while (index != null) {
-                    if (current.info.getbCode().compareTo(index.info.getbCode()) > 0) {
+                    //If current node's data is greater than index's node data, swap the data between them  
+                    // if(current.info.getbCode().compareTo(index.info.getbCode()) > 0 )
+                    if (b.compare(current.info, index.info) > 0) // chú ý
+                    {
                         temp = current.info;
                         current.info = index.info;
                         index.info = temp;
@@ -103,38 +109,6 @@ public class MyList {
             }
         }
     }
-    */
-    
-    public void sortList(Comparator<Book> b ) {
-
- //Node current will point to head  
-        Node<Book> current = head, index = null;  
-        Book temp;  
-         
-        if(head == null) {  
-            return;  
-        }  
-        else {  
-            while(current != null) {  
-                //Node index will point to node next to current  
-                index = current.next;  
-                 
-                while(index != null) {  
-                    //If current node's data is greater than index's node data, swap the data between them  
-                   // if(current.info.getbCode().compareTo(index.info.getbCode()) > 0 )
-                    if(b.compare(current.info,index.info)>0) // chú ý
-                    {  
-                        temp = current.info;  
-                        current.info = index.info;  
-                        index.info = temp;  
-                    }  
-                    index = index.next;  
-                }  
-                current = current.next;  
-            }      
-        }  
-    }
-    
 
     //return a Node at position k, starting position is 0
     public Node<Book> getNode(int k) {
