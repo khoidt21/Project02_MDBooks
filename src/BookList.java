@@ -137,11 +137,11 @@ public class BookList {
     public void addLast() {
 
         books.addLast(getBook());
-        // add data book to file txt
+        // add data book to file data.txt
         try {
             saveBookToFile(books, "data.txt");
         } catch (IOException ex) {
-            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
+             System.out.println("Add file error.Add book to first error.");
         }
 
     }
@@ -251,11 +251,11 @@ public class BookList {
     //1.4 accept and add a new Book to the begining of book list
     public void addFirst() {
         books.addFirst(getBook());
-        // add data book to file txt
+        // add data book to file data.txt
         try {
             saveBookToFile(books, "data.txt");
         } catch (IOException ex) {
-            System.out.println("Add book to first error.");
+            System.out.println("Add file error.Add book to first error.");
         }
         
     }
@@ -273,6 +273,12 @@ public class BookList {
         }
         System.out.println("A new book has been added after position " + k);
         books.addAfter(b, k);
+        // add data book to file data.txt
+        try{
+            saveBookToFile(books, "data.txt");
+        }catch(IOException ex){
+            System.out.println("Add file error.Add book to first error.");
+        }
     }
 
     //1.6 Delete a Book at position k
@@ -287,6 +293,6 @@ public class BookList {
         }
         System.out.println("A book has been delete in position " + k);
         books.deleteAt(k);
-
+        
     }
 }
