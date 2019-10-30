@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -141,7 +142,7 @@ public class BookList {
         try {
             saveBookToFile(books, "data.txt");
         } catch (IOException ex) {
-             System.out.println("Add file error.Add book to first error.");
+            System.out.println("Add data file error.Add book to first error.");
         }
 
     }
@@ -255,9 +256,9 @@ public class BookList {
         try {
             saveBookToFile(books, "data.txt");
         } catch (IOException ex) {
-            System.out.println("Add file error.Add book to first error.");
+            System.out.println("Add data file error.Add book to first error.");
         }
-        
+
     }
 
     //1.5 Add a new Book after a position k
@@ -274,10 +275,10 @@ public class BookList {
         System.out.println("A new book has been added after position " + k);
         books.addAfter(b, k);
         // add data book to file data.txt
-        try{
+        try {
             saveBookToFile(books, "data.txt");
-        }catch(IOException ex){
-            System.out.println("Add file error.Add book to first error.");
+        } catch (IOException ex) {
+            System.out.println("Add data file error.Add book to first error.");
         }
     }
 
@@ -294,5 +295,15 @@ public class BookList {
         System.out.println("A book has been delete in position " + k);
         books.deleteAt(k);
         
+        // luu lai du lieu sau khi xoa tai vi tri k vao file data.txt
+        try {
+            saveBookToFile(books, "data.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Save data file after delete position");
+        }
     }
+
+    
+
 }
