@@ -6,7 +6,9 @@
 package util;
 
 import entity.Book;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
@@ -57,6 +59,9 @@ public class MyList {
     public void traverse() {
 
         Node<Book> current = head;
+        if (current == null) {
+            System.out.println("List is empty");
+        }
         while (current != null) {
             System.out.println(current.info);
             current = current.next;
@@ -74,11 +79,38 @@ public class MyList {
         }
         return size;
     }
+
+    public void sortList() {
+        //Node current will point to head  
+        Node<Book> current = head, index = null;
+        Book temp;
+
+        if (head == null) {
+            return;
+        } else {
+            while (current != null) {
+                //Node index will point to node next to current  
+                index = current.next;
+
+                while (index != null) {
+                    //If current node's data is greater than index's node data, swap the data between them  
+                    if (current.info.getbCode().compareTo(index.info.getbCode()) > 0) {
+                        temp = current.info;
+                        current.info = index.info;
+                        index.info = temp;
+                    }
+                    index = index.next;
+                }
+                current = current.next;
+            }
+        }
+    }
+
     // function to sort a singly linked list using insertion sort 
     Node<Book> sorted;
 
     public void insertionSort() {
-       
+
         Node current = head;
         while (current != null) {
             Node next = current.next;
@@ -97,17 +129,15 @@ public class MyList {
     }
 
     public void sortedInsert(Node<Book> newnode) {
-        /* Special case for the head end */
 
         Book b = newnode.info;
-
-        if (sorted == null || b.getbCode().compareTo(newnode.info.getbCode()) < 0) {
+        if (sorted == null || b.getbCode().compareTo(newnode.info.getbCode()) > 0) {
             newnode.next = sorted;
             sorted = newnode;
         } else {
             Node<Book> current = sorted;
-            /* Locate the node before the point of insertion */
-            while (current.next != null && current.next.info.getbCode().compareTo(newnode.info.getbCode()) < 0) {
+
+            while (current.next != null && current.next.info.getbCode().compareTo(newnode.info.getbCode()) > 0) {
                 current = current.next;
             }
             newnode.next = current.next;
@@ -213,26 +243,4 @@ public class MyList {
         return current;
     }
 
-    public void sortList() {
-
-//        Node current = null, index = null;
-//        int temp;
-//        //Check whether list is empty  
-//        if (head == null) {
-//            return;
-//        } else {
-//            //Current will point to head  
-//            for (current = head; current.next != null; current = current.next) {
-//                //Index will point to node next to current  
-//                for (index = current.next; index != null; index = index.next) {
-//                    //If current's data is greater than index's data, swap the data of current and index  
-//                    if (current > index) {
-//                        temp = current.data;
-//                        current.data = index.data;
-//                        index.data = temp;
-//                    }
-//                }
-//            }
-//        }
-    }
 }

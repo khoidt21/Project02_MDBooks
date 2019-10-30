@@ -165,8 +165,8 @@ public class BookList {
     }
     
     
-    public void sortBookByCode(){
-       books.insertionSort();
+    public void sortList(){
+       books.sortList();
     }
     
     //1.3 search book by book code
