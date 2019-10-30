@@ -130,9 +130,7 @@ public class BookList {
 
     }
 
-    public void sortBookByPrice() {
-        books.sortList(new BookSortingComparatorByPrice());
-    }
+   
 
     //1.1 accept and add a new Book to the end of book list
     public void addLast() {
@@ -227,9 +225,23 @@ public class BookList {
         books.traverse();
 
     }
-
+    // sort book by code
     public void sortBookByCode() {
         books.sortList(new BookSortingCompartorByCode());
+        try {
+            saveBookToFile(books,"data.txt");
+        } catch (IOException ex) {
+            System.out.println("Add data file error.Add book to first error.");
+        }
+    }
+    // sort book by price asc 
+    public void sortBookByPrice() {
+        books.sortList(new BookSortingComparatorByPrice());
+        try {
+            saveBookToFile(books,"data.txt");
+        } catch (IOException ex) {
+            System.out.println("Add data file error.Add book to first error.");
+        }
     }
 
     //1.3 search book by book code
@@ -272,7 +284,7 @@ public class BookList {
             try {
                 k = input.nextInt();
                 if (books.size() < k) {
-                    System.out.println("Enter retype position: ");
+                    System.out.println("Enter retype position k.k must be less than or equal to the length of list.");
                     k = input.nextInt();
                 }
                 check = false;
@@ -302,7 +314,7 @@ public class BookList {
             try {
                 k = input.nextInt();
                 if (books.size() < k) {
-                    System.out.println("Enter retype position: ");
+                    System.out.println("Enter retype position k.k must be less than or equal to the length of list.");
                     k = input.nextInt();
                 }
                 check = false;
@@ -322,6 +334,8 @@ public class BookList {
             e.printStackTrace();
             System.out.println("Save data file after delete position");
         }
+        // goi lai list book 
+        list();
     }
 
 }
