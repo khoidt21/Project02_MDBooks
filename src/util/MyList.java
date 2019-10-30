@@ -80,7 +80,7 @@ public class MyList {
         }
         return size;
     }
-
+    /*
     public void sortBookByCode() {
 
         Node<Book> current = head, index = null;
@@ -103,6 +103,7 @@ public class MyList {
             }
         }
     }
+    */
     
     public void sortList(Comparator<Book> b ) {
 
